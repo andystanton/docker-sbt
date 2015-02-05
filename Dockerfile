@@ -1,6 +1,6 @@
-FROM        ubuntu:14.04
+FROM        ubuntu:14.10
 MAINTAINER  andystanton
-RUN			apt-get update
-RUN			apt-get install -y wget git openjdk-7-jre-headless
-RUN			wget https://dl.bintray.com/sbt/debian/sbt-0.13.6.deb
-RUN			dpkg -i sbt-0.13.6.deb
+RUN         apt-get update
+RUN         apt-get install -y wget git openjdk-8-jre-headless
+RUN         wget https://dl.bintray.com/sbt/debian/sbt-0.13.7.deb
+RUN         dpkg -i sbt-0.13.7.deb
