@@ -1,10 +1,10 @@
-FROM        ubuntu:14.10
+FROM        jeanblanchard/java:jdk-8
 MAINTAINER  andystanton
-ENV         SBT_VERSION 0.13.9
-RUN         apt-get update
-RUN         apt-get install --no-install-recommends -y wget openjdk-8-jdk
-RUN         /var/lib/dpkg/info/ca-certificates-java.postinst configure
-RUN         wget https://dl.bintray.com/sbt/debian/sbt-${SBT_VERSION}.deb && \
-            dpkg -i sbt-${SBT_VERSION}.deb && \
-            rm sbt-${SBT_VERSION}.deb && \
+ENV         SBT_VERSION 0.13.11
+RUN         apk update && apk add bash openssl && \
+            wget https://dl.bintray.com/sbt/native-packages/sbt/${SBT_VERSION}/sbt-${SBT_VERSION}.tgz && \
+            tar zxf sbt-${SBT_VERSION}.tgz && \
+            cp -r sbt/* / && \
+            rm -rf sbt sbt-${SBT_VERSION}.tgz && \
             sbt version
+CMD         sbt
